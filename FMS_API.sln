@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.271
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FMS_API", "FMS_API\FMS_API.csproj", "{5F2F322C-8940-41CA-A5C8-132146071AAF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FMS_API", "FMS_API\FMS_API.csproj", "{5F2F322C-8940-41CA-A5C8-132146071AAF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FMS_API_TEST", "FMS_API_TEST\FMS_API_TEST.csproj", "{E8117E09-3367-49E1-A8E9-12C665339BDC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{5F2F322C-8940-41CA-A5C8-132146071AAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5F2F322C-8940-41CA-A5C8-132146071AAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5F2F322C-8940-41CA-A5C8-132146071AAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8117E09-3367-49E1-A8E9-12C665339BDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8117E09-3367-49E1-A8E9-12C665339BDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8117E09-3367-49E1-A8E9-12C665339BDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8117E09-3367-49E1-A8E9-12C665339BDC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
