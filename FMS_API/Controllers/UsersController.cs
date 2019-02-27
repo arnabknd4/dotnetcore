@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using FMS_API.Models;
-
-namespace FMS_API.Controllers
+﻿namespace FMS_API.Controllers
 {
+    using FMS_API_BAL;
+    using FMS_API_DAL;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.EntityFrameworkCore;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+
     [Route("api/[controller]")]
     [ApiController]
     public class UsersController : ControllerBase
@@ -22,7 +21,7 @@ namespace FMS_API.Controllers
 
         // GET: api/Users
         [HttpGet]
-        public IEnumerable<Users> GetUsers()
+        public IEnumerable<User> GetUsers()
         {
             return _context.Users;
         }
@@ -48,7 +47,7 @@ namespace FMS_API.Controllers
 
         // PUT: api/Users/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutUsers([FromRoute] int id, [FromBody] Users users)
+        public async Task<IActionResult> PutUsers([FromRoute] int id, [FromBody] User users)
         {
             if (!ModelState.IsValid)
             {
@@ -83,7 +82,7 @@ namespace FMS_API.Controllers
 
         // POST: api/Users
         [HttpPost]
-        public async Task<IActionResult> PostUsers([FromBody] Users users)
+        public async Task<IActionResult> PostUsers([FromBody] User users)
         {
             if (!ModelState.IsValid)
             {
