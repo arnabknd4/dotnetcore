@@ -51,7 +51,6 @@
             }
             //app.UseMvc();
             app.UseStaticFiles();
-
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
