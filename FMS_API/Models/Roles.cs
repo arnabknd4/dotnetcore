@@ -7,12 +7,12 @@ namespace FMS_API.Models
     {
         public Roles()
         {
-            Users = new HashSet<Users>();
+            Users = new HashSet<User>();
         }
 
         public int RoleId { get; set; }
         public string RoleName { get; set; }
 
-        public ICollection<Users> Users { get; set; }
+        public ICollection<User> Users { get; set; }
     }
 }

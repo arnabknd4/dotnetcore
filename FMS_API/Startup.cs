@@ -1,6 +1,6 @@
 ﻿namespace FMS_API
 {
-    using FMS_API_DAL;
+    using FMS_API.Models;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Mvc;

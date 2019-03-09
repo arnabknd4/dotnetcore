@@ -1,7 +1,6 @@
 ﻿namespace FMS_API.Controllers
 {
-    using FMS_API_BAL;
-    using FMS_API_DAL;
+    using FMS_API.Models;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.EntityFrameworkCore;
     using System.Collections.Generic;

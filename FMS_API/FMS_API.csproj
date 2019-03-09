@@ -5,13 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Models\FMSContext.cs" />
-    <Compile Remove="Models\Roles.cs" />
-    <Compile Remove="Models\Users.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Models\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
 
@@ -27,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FMS_API_DAL\FMS_API_DAL.csproj" />
+    <ProjectReference Include="..\UtilityService\UtilityService.csproj" />
   </ItemGroup>
 
 </Project>
