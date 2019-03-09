@@ -7,6 +7,8 @@
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
+    using Utility;
+    using UtilityService;
 
     public class Startup
     {
@@ -31,6 +33,7 @@
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             var connection = @"Server=.;Database=FMS;Trusted_Connection=True;ConnectRetryCount=0";
             services.AddDbContext<FMSContext>(options => options.UseSqlServer(connection));
+            services.AddTransient<IEmail, Email>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

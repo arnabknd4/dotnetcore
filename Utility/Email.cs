@@ -1,5 +1,6 @@
 ﻿namespace Utility
 {
+    using FMS_API_BAL;
     using MailKit.Net.Smtp;
     using MimeKit;
     using System.Threading.Tasks;
@@ -7,22 +8,22 @@
 
     public class Email : IEmail
     {
-        public async Task<bool> send()
+        public async Task<bool> send(EmailConfig emailConfig)
         {
             try
             {
                 var message = new MimeMessage();
-                message.From.Add(new MailboxAddress("Arnab", "arnabknd4@gmail.com"));
-                message.To.Add(new MailboxAddress("Arnab", "arnabknd4@gmail.com"));
-                message.Subject = "Sample mail test";
-                message.Body = new TextPart("plain")
+                message.From.Add(new MailboxAddress(Constants.MESSAGE_FROM_EMAIL_NAME, Constants.MESSAGE_FROM_EMAILID));
+                message.To.Add(new MailboxAddress(emailConfig.ToName, emailConfig.ToEmailAddress));
+                message.Subject = emailConfig.Subject;
+                message.Body = new TextPart(emailConfig.TextFormatter)
                 {
-                    Text = "Sample body"
+                    Text = emailConfig.Body
                 };
                 using (var client = new SmtpClient())
                 {
-                    client.Connect("smtp.gmail.com", 587, false);
-                    client.Authenticate("arnabknd4@gmail.com", "demi lavato");
+                    client.Connect(Constants.SMTP_SERVER, Constants.SMTP_PORT, Constants.USE_SSL);
+                    client.Authenticate(Constants.AUTHENTICATED_EMAIL_ID, Constants.AUTHENTICATED_EMAIL_PASSWORD);
                     client.Send(message);
                     client.Disconnect(true);
                 }

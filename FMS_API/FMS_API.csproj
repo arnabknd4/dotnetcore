@@ -20,7 +20,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\FMS_API_BAL\FMS_API_BAL.csproj" />
     <ProjectReference Include="..\UtilityService\UtilityService.csproj" />
+    <ProjectReference Include="..\Utility\Utility.csproj" />
   </ItemGroup>
 
 </Project>

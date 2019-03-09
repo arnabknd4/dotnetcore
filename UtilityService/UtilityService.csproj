@@ -4,4 +4,8 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\FMS_API_BAL\FMS_API_BAL.csproj" />
+  </ItemGroup>
+
 </Project>
