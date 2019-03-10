@@ -5,5 +5,6 @@
     public interface IEmail
     {
         Task<bool> send(EmailConfig emailConfig);
+        Task<string> GetTemplate(string assosiateName="Assosiate");
     }
 }

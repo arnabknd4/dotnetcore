@@ -18,18 +18,24 @@ namespace Tests
         [Test]
         public void email_sendMail_returns_SuccessMessage()
         {
+            string template = string.Empty;
+            Task.Run(async () =>
+            {
+                template = await email.GetTemplate();
+            }).GetAwaiter().GetResult();
+
             EmailConfig config = new EmailConfig()
             {
-                Body = "Sample Body",
+                Body = template.ToString(),
                 Subject = " Test Message",
-                TextFormatter = "plain",
+                TextFormatter = "html",
                 ToEmailAddress = "arnabknd4@gmail.com",
                 ToName = "Arnab"
             };
             bool result = false;
             Task.Run(async () =>
             {
-               result = await email.send(config);
+                result = await email.send(config);
             }).GetAwaiter().GetResult();
             Assert.That(result, Is.True);
         }

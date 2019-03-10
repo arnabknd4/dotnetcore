@@ -17,10 +17,11 @@
         [HttpGet]
         public async Task<IActionResult> Get()
         {
+            var template = await email.GetTemplate();
             EmailConfig config = new EmailConfig() {
-                Body = "Sample Body",
+                Body = template.ToString(),
                 Subject = " Test Message",
-                TextFormatter = "plain",
+                TextFormatter = "html",
                 ToEmailAddress = "arnabknd4@gmail.com",
                 ToName = "Arnab"
             };
