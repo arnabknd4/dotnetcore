@@ -33,22 +33,9 @@
             try
             {
                 var file = Request.Form.Files[0];
-                //string folderName = "Upload";
-                //string webRootPath = _hostingEnvironment.WebRootPath;
-                //string newPath = Path.Combine(webRootPath, folderName);
-                //if (!Directory.Exists(newPath))
-                //{
-                //    Directory.CreateDirectory(newPath);
-                //}
-                if (file.Length > 0)
+                if (file.Length > 0 && file.ContentType == "application/vnd.ms-excel")
                 {
-                    processExcel.ProcessFile(file);
-                    //string fileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
-                    //string fullPath = Path.Combine(newPath, fileName);
-                    //using (var stream = new FileStream(fullPath, FileMode.Create))
-                    //{
-                    //    file.CopyTo(stream);
-                    //}
+                    var result  = processExcel.ProcessFile(file);
                 }
                 return Ok("Upload Successful.");
             }
