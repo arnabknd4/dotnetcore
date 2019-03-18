@@ -1,0 +1,11 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Feedback Management System</title>
+	</head>
+<body style="color:red">
+	<h2>Feedback Management System</h2>
+	String.Format("<P>Dear %s,</p>", assosiateName));
+	<P>We're happy you perticipated in this program. Please give sometime for your valuable feedback!</p>
+</body>
+</html>

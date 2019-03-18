@@ -22,24 +22,31 @@
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            #region CORS config
             services.AddCors(options =>
             {
                 options.AddPolicy("CorsPolicy",
                     builder => builder.AllowAnyOrigin()
                     .AllowAnyMethod()
                     .AllowAnyHeader()
+                    //.WithOrigins("http://localhost:4200")
                     .AllowCredentials());
             });
+            #endregion
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             var connection = @"Server=.;Database=FMS;Trusted_Connection=True;ConnectRetryCount=0";
             services.AddDbContext<FMSContext>(options => options.UseSqlServer(connection));
+            #region Dependency injection
             services.AddTransient<IEmail, Email>();
+            services.AddTransient<IProcessExcel, ProcessExcel>();
+            #endregion
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             app.UseCors("CorsPolicy");
+            //app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader().AllowCredentials());
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
