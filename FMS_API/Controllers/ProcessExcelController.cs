@@ -33,7 +33,7 @@
             try
             {
                 var file = Request.Form.Files[0];
-                if (file.Length > 0 && file.ContentType == "application/vnd.ms-excel")
+                if (file.Length > 0)
                 {
                     var result  = processExcel.ProcessFile(file);
                 }

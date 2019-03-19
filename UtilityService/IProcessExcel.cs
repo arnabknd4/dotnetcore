@@ -1,9 +1,12 @@
-﻿using Microsoft.AspNetCore.Http;
-
-namespace UtilityService
+﻿namespace UtilityService
 {
+    using FMS_API_BAL;
+    using Microsoft.AspNetCore.Http;
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+
     public interface IProcessExcel
     {
-        string ProcessFile(IFormFile formFile);
+        Task<List<User>> ProcessFile(IFormFile formFile);
     }
 }
