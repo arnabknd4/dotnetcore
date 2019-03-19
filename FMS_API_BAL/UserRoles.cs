@@ -6,7 +6,10 @@ namespace FMS_API_BAL
 {
     public static class UserRoles
     {
-        public const int PMO = 2;
-        public const int POC = 3;
+        private const int pMO = 2;
+        private const int pOC = 3;
+
+        public static int PMO => pMO;
+        public static int POC => pOC;
     }
 }

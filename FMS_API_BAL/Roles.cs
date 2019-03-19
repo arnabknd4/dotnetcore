@@ -7,12 +7,12 @@ namespace FMS_API_BAL
     {
         public Roles()
         {
-            Users = new HashSet<User>();
+            Users = new HashSet<AdminUser>();
         }
 
         public int RoleId { get; set; }
         public string RoleName { get; set; }
 
-        public ICollection<User> Users { get; set; }
+        public ICollection<AdminUser> Users { get; set; }
     }
 }

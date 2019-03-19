@@ -4,9 +4,11 @@
     using Microsoft.AspNetCore.Http;
     using System.Collections.Generic;
     using System.Threading.Tasks;
+    using System.IO;
 
     public interface IProcessExcel
     {
-        Task<List<User>> ProcessFile(IFormFile formFile);
+        Task<List<AdminUser>> ProcessAdminBulkUpload(Stream formFile);
+        Task<List<AssosiateFeedbackModel>> ProcessBulkUploadForAssosiates(Stream formFile);
     }
 }

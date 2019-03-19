@@ -22,11 +22,6 @@
             _hostingEnvironment = hostingEnvironment;
             this.processExcel = processExcel;
         }
-        [HttpGet]
-        public IActionResult Get()
-        {
-            return Ok("Working!");
-        }
         [HttpPost, DisableRequestSizeLimit]
         public IActionResult Post()
         {
@@ -35,7 +30,7 @@
                 var file = Request.Form.Files[0];
                 if (file.Length > 0)
                 {
-                    var result  = processExcel.ProcessFile(file);
+                    var result  = processExcel.ProcessAdminBulkUpload(file.OpenReadStream());
                 }
                 return Ok("Upload Successful.");
             }

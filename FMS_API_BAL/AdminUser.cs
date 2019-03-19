@@ -2,7 +2,7 @@
 
 namespace FMS_API_BAL
 {
-    public class User
+    public class AdminUser
     {
         public int UserId { get; set; }
         public string FirstName { get; set; }
