@@ -2,40 +2,110 @@ namespace Tests
 {
     using FMS_API_BAL;
     using NUnit.Framework;
+    using System;
     using System.Threading.Tasks;
     using Utility;
 
     [TestFixture]
     public class UtilityTest
     {
-        private Email email;
+        private Email _email;
         [SetUp]
         public void Setup()
         {
-            email = new Email();
+            _email = new Email();
         }
-
+        [Category("Email")]
         [Test]
-        public void email_sendMail_returns_SuccessMessage()
+        public void email_PerticipatedSendMail_returns_Bool()
         {
-            string template = string.Empty;
+            bool result = false;
+            string emailBodyTemplate = string.Empty;
             Task.Run(async () =>
             {
-                template = await email.GetTemplate();
+                emailBodyTemplate = await _email.GetEmailTemplate
+                            (
+                            Constants.PERTICIPATED,
+                            DateTime.Now.ToString("dd/MM/yyyy"),
+                            "Sample Test Event",
+                            "749783"
+                            );
             }).GetAwaiter().GetResult();
 
             EmailConfig config = new EmailConfig()
             {
-                Body = template.ToString(),
+                Body = emailBodyTemplate.ToString(),
+                Subject = " Test Message",
+                TextFormatter = "html",
+                ToEmailAddress = "arnabknd4@gmail.com",
+                ToName = "Arnab"
+            };            
+            Task.Run(async () =>
+            {
+                result = await _email.Send(config);
+            }).GetAwaiter().GetResult();
+            Assert.That(result, Is.True);
+        }
+        [Category("Email")]
+        [Test]
+        public void email_NotPerticipatedSendMail_returns_Bool()
+        {
+            bool result = false;
+            string emailBodyTemplate = string.Empty;
+            Task.Run(async () =>
+            {
+                emailBodyTemplate = await _email.GetEmailTemplate
+                            (
+                            Constants.NOTPERTICIPATED,
+                            DateTime.Now.ToString("dd/MM/yyyy"),
+                            "Sample Test Event",
+                            "749783"
+                            );
+            }).GetAwaiter().GetResult();
+
+            EmailConfig config = new EmailConfig()
+            {
+                Body = emailBodyTemplate.ToString(),
                 Subject = " Test Message",
                 TextFormatter = "html",
                 ToEmailAddress = "arnabknd4@gmail.com",
                 ToName = "Arnab"
             };
-            bool result = false;
             Task.Run(async () =>
             {
-                result = await email.send(config);
+                result = await _email.Send(config);
+            }).GetAwaiter().GetResult();
+            Assert.That(result, Is.True);
+        }
+
+        [Category("Email")]
+        [Test]
+        public void email_UnregisteredSendMail_returns_Bool()
+        {
+            bool result = false;
+            string emailBodyTemplate = string.Empty;
+            Task.Run(async () =>
+            {
+                emailBodyTemplate = await _email.GetEmailTemplate
+                            (
+                            Constants.UNREGISTERED,
+                            DateTime.Now.ToString("dd/MM/yyyy"),
+                            "Sample Test Event",
+                            "749783"
+                            );
+            }).GetAwaiter().GetResult();
+
+            EmailConfig config = new EmailConfig()
+            {
+                Body = emailBodyTemplate.ToString(),
+                Subject = " Test Message",
+                TextFormatter = "html",
+                ToEmailAddress = "arnabknd4@gmail.com",
+                ToName = "Arnab"
+            };
+            Task.Run(async () =>
+            {
+                result = await _email.Send(config);
             }).GetAwaiter().GetResult();
             Assert.That(result, Is.True);
         }

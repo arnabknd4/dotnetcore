@@ -85,35 +85,16 @@
                         do
                         {
                             while (reader.Read())
-                            {
-                                Int32 roleId = 0;
-                                bool isRoleValidated = false;
-                                if (reader[5] != DBNull.Value)
+                            {                                
+                                listUsers.Add(new AssosiateFeedbackModel()
                                 {
-                                    if (reader.GetString(5).ToLower().Equals("pmo"))
-                                    {
-                                        roleId = UserRoles.PMO;
-                                        isRoleValidated = true;
-                                    }
-                                    else if (reader.GetString(5).ToLower().Equals("poc"))
-                                    {
-                                        roleId = UserRoles.POC;
-                                        isRoleValidated = true;
-
-                                    }
-                                }
-                                if (isRoleValidated)
-                                {
-                                    listUsers.Add(new AssosiateFeedbackModel()
-                                    {
-                                        EventId = (reader[0] != DBNull.Value) ? Convert.ToInt32(reader.GetValue(0)) : 0,
-                                        EventName = (reader[1] != DBNull.Value) ? reader.GetString(1) : null,
-                                        BeneficiaryName = (reader[2] != DBNull.Value) ? reader.GetString(2) : null,
-                                        BaseLocation = (reader[3] != DBNull.Value) ? reader.GetString(3) : null,
-                                        EventDate = (reader[3] != DBNull.Value) ? Convert.ToDateTime(reader.GetValue(3)) : DateTime.Now,
-                                        EmplotyeeId = (reader[3] != DBNull.Value) ? reader.GetInt32(3) : 0
-                                    });
-                                }
+                                    EventId = (reader[0] != DBNull.Value) ? Convert.ToInt32(reader.GetValue(0)) : 0,
+                                    EventName = (reader[1] != DBNull.Value) ? reader.GetString(1) : null,
+                                    BeneficiaryName = (reader[2] != DBNull.Value) ? reader.GetString(2) : null,
+                                    BaseLocation = (reader[3] != DBNull.Value) ? reader.GetString(3) : null,
+                                    EventDate = (reader[3] != DBNull.Value) ? Convert.ToDateTime(reader.GetValue(3)) : DateTime.Now,
+                                    EmplotyeeId = (reader[3] != DBNull.Value) ? reader.GetInt32(3) : 0
+                                });
 
                             }
                         } while (reader.NextResult());
