@@ -2,44 +2,39 @@
 {
     using FMS_API_BAL;
     using MailKit.Net.Smtp;
+    using Microsoft.AspNetCore.Hosting;
     using MimeKit;
     using System;
+    using System.IO;
     using System.Text;
     using System.Threading.Tasks;
     using UtilityService;
 
     public class Email : IEmail
     {
+        
         public async Task<string> GetEmailTemplate(string templateType, string perticipatedDate, string eventname, string assosiateName = "Assosiate")
         {
             string emailBody = string.Empty;
             if (templateType.Equals("NotPerticipated"))
             {
-                Email Email = new Email();
-                emailBody = Email.GetNotPerticipatedEmailBodyTemplate(perticipatedDate, eventname);
+                emailBody = GetNotPerticipatedEmailBodyTemplate(perticipatedDate, eventname);
             }
             else if (templateType.Equals("Perticipated"))
             {
-                Email Email = new Email();
-                emailBody = Email.GetPerticipatedBodyTemplate(perticipatedDate, eventname);
+                emailBody = GetPerticipatedBodyTemplate(perticipatedDate, eventname);
             }
             else if (templateType.Equals("Unregistered"))
             {
-                Email Email = new Email();
-                emailBody = Email.GetUnRegisteredEmailBodyTemplate(perticipatedDate, eventname);
+                emailBody = GetUnRegisteredEmailBodyTemplate(perticipatedDate, eventname);
             }
 
             string name = "<P>Dear " + assosiateName + ",</p>";
             StringBuilder template = new StringBuilder();
 
-            template.Append("<!DOCTYPE html");
-            template.Append("<html><head><title>Feedback Management System</title></head>");
-            template.Append("<body style=\"color:red\">");
-            template.Append("<h2>Feedback Management System</h2>");
-            template.Append(name);
-            template.Append(emailBody);
-            template.Append("</body>");
-            template.Append("</html>");
+            template.Append("<table><tr><td align=\"center\"></td></tr>");
+            template.Append(" <td><b>" + name + "</b><p><i> " + emailBody + " </i></p></td>");
+            template.Append("<tr><td align=\"center\">FEEDBACK MANAGEMENT SYSTEM</td></tr></table>");
 
             return template.ToString();
         }

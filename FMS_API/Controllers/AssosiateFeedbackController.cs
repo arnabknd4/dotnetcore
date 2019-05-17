@@ -44,7 +44,7 @@
                         EmailConfig config = new EmailConfig()
                         {
                             Body = emailBodyTemplate.ToString(),
-                            Subject = " Test Message",
+                            Subject = "Your feedback is valuable for us",
                             TextFormatter = "html",
                             ToEmailAddress = "arnabknd4@gmail.com",
                             ToName = "Arnab"

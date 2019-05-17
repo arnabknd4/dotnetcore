@@ -10,7 +10,7 @@ namespace Utility
         public const Int32 SMTP_PORT = 587;
         public const bool USE_SSL = false;
         public const string MESSAGE_FROM_EMAILID = "arnabknd4@gmail.com";
-        public const string MESSAGE_FROM_EMAIL_NAME = "Arnab Kundu";
+        public const string MESSAGE_FROM_EMAIL_NAME = "Feedback Management System";
         public const string AUTHENTICATED_EMAIL_ID = "arnabknd4@gmail.com";
         public const string AUTHENTICATED_EMAIL_PASSWORD = "ZGVtaSBsYXZhdG8=";
 

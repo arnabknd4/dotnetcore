@@ -5,6 +5,7 @@
     using Microsoft.AspNetCore.Http;
     using System;
     using System.Collections.Generic;
+    using System.Globalization;
     using System.IO;
     using System.Threading.Tasks;
     using UtilityService;
@@ -85,15 +86,18 @@
                         do
                         {
                             while (reader.Read())
-                            {                                
+                            {
+                                DateTime eventDateTime = new DateTime();
+                                eventDateTime = Convert.ToDateTime(DateTime.ParseExact(reader.GetString(4), "dd/MM/yyyy", CultureInfo.InvariantCulture));
+
                                 listUsers.Add(new AssosiateFeedbackModel()
                                 {
                                     EventId = (reader[0] != DBNull.Value) ? Convert.ToInt32(reader.GetValue(0)) : 0,
                                     EventName = (reader[1] != DBNull.Value) ? reader.GetString(1) : null,
                                     BeneficiaryName = (reader[2] != DBNull.Value) ? reader.GetString(2) : null,
                                     BaseLocation = (reader[3] != DBNull.Value) ? reader.GetString(3) : null,
-                                    EventDate = (reader[3] != DBNull.Value) ? Convert.ToDateTime(reader.GetValue(3)) : DateTime.Now,
-                                    EmplotyeeId = (reader[3] != DBNull.Value) ? reader.GetInt32(3) : 0
+                                    EventDate = (reader[4] != DBNull.Value) ? eventDateTime : DateTime.Now,
+                                    EmplotyeeId = (reader[5] != DBNull.Value) ? Convert.ToInt32(reader.GetValue(5)) : 0
                                 });
 
                             }
